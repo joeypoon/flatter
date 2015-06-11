@@ -2,16 +2,26 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <p><%= post.content %></p>
-      <p>
-        <%= link_to post.user.name, post.user %> <%= time_ago_in_words post.created_at %> ago
-        <% if current_user && post.user != current_user %>
-          <% if !(current_user.following?(post.user)) %>
-            - <%= link_to 'Follow', follow_path(id: post.user.id), method: :post %></p>
-          <% else %>
-            - <%= link_to 'Unfollow', unfollow_path(id: post.user.id), method: :post %>
-          <% end %>
+      <div class="media">
+        <% if post.photo.present? %>
+          <div class="media-left">
+            <%= image_tag post.photo.url(:post), class: 'media-object img-rounded' %>
+          </div>
         <% end %>
+        <div class="media-body">
+          <%= post.content %>
+          <p>
+            <%= link_to post.user.name, post.user %> <%= time_ago_in_words post.created_at %> ago
+            <% if current_user && post.user != current_user %>
+              <% if !(current_user.following?(post.user)) %>
+                - <%= link_to 'Follow', follow_path(id: post.user.id), method: :post %>
+              <% else %>
+                - <%= link_to 'Unfollow', unfollow_path(id: post.user.id), method: :post %>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 

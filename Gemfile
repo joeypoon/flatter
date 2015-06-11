@@ -20,6 +20,8 @@ gem 'simple_form'
 gem 'acts_as_follower'
 gem 'carrierwave'
 gem 'carrierwave-aws'
+gem 'mini_magick'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug'
