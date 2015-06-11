@@ -23,6 +23,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    user = User.find params[:id]
+    current_user.follow(user)
+    redirect_to root_path, notice: "You're flattering #{user.name}"
+  end
+
+  def unfollow
+    user = User.find params[:id]
+    current_user.stop_following(user)
+    redirect_to root_path, notice: "You're not flattering #{user.name} very much"
+  end
+
   private
 
     def user_params

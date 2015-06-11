@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   post 'users' => 'users#create'
 
+  post 'user/follow/:id' => 'users#follow', as: :follow
+
+  post 'user/unfollow/:id' => 'users#unfollow', as: :unfollow
+
   ### Session
 
   get 'login' => 'session#new'

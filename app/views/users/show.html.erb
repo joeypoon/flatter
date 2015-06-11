@@ -1,5 +1,11 @@
 <%= @user.name %>
 <%= @user.email %>
 
+<h3>Following</h3>
+<%= render 'layouts/following_list' %>
+
+<h3>Followers</h3>
+<%= render 'layouts/followers_list' %>
+
 <h3>Recent posts</h3>
 <%= render 'layouts/post_list' %>
