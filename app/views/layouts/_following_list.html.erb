@@ -1,7 +1,10 @@
 <ul class="list-group">
-  <% @user.all_following.each do |following_user| %>
+  <% @user.all_following[0..4].each do |following_user| %>
 
-    <li class="list-group-item"><%= following_user.name %></li>
+    <li class="list-group-item">
+      <%= link_to following_user.name, following_user %> -
+      <%= link_to 'Unfollow', unfollow_path(id: following_user.id), method: :post %>
+    </li>
 
   <% end %>
 </ul>

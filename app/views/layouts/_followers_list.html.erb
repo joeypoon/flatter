@@ -1,7 +1,7 @@
 <ul class="list-group">
-  <% @user.followers.each do |following_user| %>
+  <% @user.followers[0..4].each do |follower| %>
 
-    <li class="list-group-item"><%= following_user.name %></li>
+    <li class="list-group-item"><%= link_to follower.name, follower %></li>
 
   <% end %>
 </ul>
