@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <%= simple_form_for @post do |f| %>
 
-    <div style="margin-bottom: 2em; margin-top: 2em;">
+    <div class="margin-top margin-bottom">
       <%= f.input :content, label: 'Flatter', placeholder: 'Compliment someone' %>
       <%= f.input :photo %>
       <%= f.submit 'Compliment', class: 'btn btn-primary' %>

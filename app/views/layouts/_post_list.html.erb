@@ -5,7 +5,9 @@
       <div class="media">
         <% if post.photo.present? %>
           <div class="media-left">
-            <%= image_tag post.photo.url(:post), class: 'media-object img-rounded' %>
+            <%= link_to post.photo.url(:large) do %>
+              <%= image_tag post.photo.url(:thumb), class: 'media-object img-rounded' %>
+            <% end %>
           </div>
         <% end %>
         <div class="media-body">
