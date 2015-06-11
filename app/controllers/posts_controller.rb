@@ -12,8 +12,19 @@ class PostsController < ApplicationController
   end
 
   def index
+    all_user_ids = User.all.map { |user| user.id }
+    all_user_ids.delete(current_user.id)
+    not_following_list = all_user_ids.reject { |user_id| current_user.following? User.find_by(id:user_id) }
+    @users = User.all.where(id: not_following_list)[0..9]
+
     @post = Post.new
-    @posts = Post.all.order('created_at desc').page(params[:page])
+    if current_user
+      follower_ids = current_user.all_following.map { |user| user.id }
+      all_ids = follower_ids << current_user.id
+      @posts = Post.all.where(user_id: all_ids).order('created_at desc').page(params[:page])
+    else
+      @posts = Post.all.order('created_at desc').page(params[:page])
+    end
   end
 
   private

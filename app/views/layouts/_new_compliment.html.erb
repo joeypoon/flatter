@@ -1,9 +1,11 @@
-<%= simple_form_for @post do |f| %>
+<div class="col-md-12">
+  <%= simple_form_for @post do |f| %>
 
-  <div style="margin-bottom: 2em; margin-top: 2em;">
-    <%= f.input :content, label: 'Flatter' %>
-    <%= f.submit 'Compliment', class: 'btn btn-primary' %>
-  </div>
+    <div style="margin-bottom: 2em; margin-top: 2em;">
+      <%= f.input :content, label: 'Flatter' %>
+      <%= f.submit 'Compliment', class: 'btn btn-primary' %>
+    </div>
 
-<% end %>
+  <% end %>
+</div>
 <div class="clearfix"></div>

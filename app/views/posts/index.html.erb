@@ -2,6 +2,18 @@
   <%= render 'layouts/new_compliment' %>
 <% end %>
 
-<%= render 'layouts/post_list' %>
+<div class="<%= 'col-md-8' if current_user %>">
+  <%= render 'layouts/post_list' %>
+</div>
 
-<%= paginate @posts %>
+<% if current_user %>
+  <div class="col-md-4">
+    <%= render 'layouts/interesting_users' %>
+  </div>
+<% end %>
+
+<div class="clearfix"></div>
+
+<div class="col-md-12">
+  <%= paginate @posts %>
+</div>
