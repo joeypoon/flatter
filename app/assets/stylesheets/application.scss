@@ -17,17 +17,16 @@
 body {
   // background-repeat: no-repeat;
   // background-size: cover;
-  background-color: lighten(#F1C40F, 20%);
+  // background-color: lighten(#F1C40F, 20%);
 
   div {
 
     nav {
-      height: 3em;
 
       div {
 
-        .list-inline {
-          margin-top: 0.7em;
+        ul {
+          margin-right: .5em;
         }
       }
     }

@@ -2,21 +2,34 @@
 
   <div class="container">
 
-    <ul class="list-inline col-md-12">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <li><%= link_to 'Flatter', root_path, class: 'navbar-brand' %></li>
+    </div>
 
-      <li><%= link_to 'Home', root_path %></li>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
 
-      <% if current_user.present? %>
+      <ul class="nav navbar-nav navbar-right">
 
-        <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+        <% if current_user.present? %>
 
-      <% else %>
+          <li><%= link_to "#{current_user.name}", current_user %></li>
+          <li><%= link_to 'Logout', logout_path, method: :delete %></li>
 
-        <li><%= link_to 'Login', login_path %></li>
+        <% else %>
 
-      <% end %>
+          <li><%= link_to 'Login', login_path %></li>
 
-    </ul>
+        <% end %>
+
+      </ul>
+
+    </div>
 
   </div>
 
