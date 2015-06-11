@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @posts = Post.all.where('user_id = ?', params[:id]).order('created_at desc limit 5')
     @user = User.find params[:id]
   end
 

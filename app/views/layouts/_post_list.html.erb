@@ -1,0 +1,10 @@
+<% @posts.each do |post| %>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p><%= post.content %></p>
+      <p><%= link_to post.user.name, post.user %> <%= time_ago_in_words post.created_at %> ago</p>
+    </div>
+  </div>
+
+<% end %>

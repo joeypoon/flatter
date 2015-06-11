@@ -38,6 +38,7 @@ gem 'bootstrap-sass'
 gem 'kaminari'
 gem 'faker'
 gem 'simple_form'
+gem "acts_as_follower"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
