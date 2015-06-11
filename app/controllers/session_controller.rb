@@ -16,7 +16,7 @@ class SessionController < ApplicationController
 
   def delete
     session.delete(:user_id)
-    redirect_to root_path
+    redirect_to root_path, notice: 'Successfully signed out'
   end
 
   private

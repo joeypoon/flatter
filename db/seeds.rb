@@ -8,6 +8,10 @@
 
 10.times do
 
-  User.create(name: Faker::Name.name, email: Faker::Internet.email, password: 'password', password_confirmation: 'password')
+  user = User.create(name: Faker::Name.name, email: Faker::Internet.email, password: 'password', password_confirmation: 'password')
+
+  5.times do
+    Post.create(content: Faker::Hacker.say_something_smart, user_id: user.id)
+  end
 
 end
