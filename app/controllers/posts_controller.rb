@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
 
   def create
-    @post = Post.new post_params
-    @post.user = current_user
-    if @post.save
-      redirect_to root_path, notice: 'Success!'
-    else
-      flash.now[:alert] = "Fail"
-      render :index
+    if authenticate_user
+      @post = Post.new post_params
+      @post.user = current_user
+      if @post.valid? && @post.save
+        redirect_to root_path, notice: 'Success!'
+      else
+        redirect_to :back, alert: 'Fail'
+      end
     end
   end
 
@@ -20,6 +21,8 @@ class PostsController < ApplicationController
     end
 
     @post = Post.new
+
+
     if current_user
       follower_ids = current_user.all_following.map { |user| user.id }
       all_ids = follower_ids << current_user.id

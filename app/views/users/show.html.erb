@@ -1,6 +1,11 @@
-<h2 style="margin-bottom: 1em;">
-  <%= @user.name %>
-</h2>
+<div class="media">
+    <div class="media-left">
+      <%= image_tag @user.photo.url(:thumb), class: 'media-object img-rounded' %>
+    </div>
+  <div class="media-body">
+    <h2 style="margin-left: 1em;"><%= @user.name %></h2>
+  </div>
+</div>
 
 <h3>Following <span class="badge"><%= @user.follow_count %></span></h3>
 <%= render 'layouts/following_list' %>

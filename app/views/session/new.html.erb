@@ -1,8 +1,10 @@
+<div class="col-md-8 col-md-offset-2 margin-top">
 <%= simple_form_for(:session, url: login_path) do |f| %>
 
   <%= f.input :email %>
   <%= f.input :password %>
-  <%= f.submit 'Login', class: 'btn btn-primary' %>
+  <%= f.submit 'Login', class: 'btn btn-primary form-control', style: 'margin-bottom: 0.5em' %>
   <p>New User? <%= link_to 'Sign Up', new_user_path %></p>
 
 <% end %>
+</div>
