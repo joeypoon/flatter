@@ -12,10 +12,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    all_user_ids = User.all.map { |user| user.id }
-    all_user_ids.delete(current_user.id)
-    not_following_list = all_user_ids.reject { |user_id| current_user.following? User.find_by(id:user_id) }
-    @users = User.all.where(id: not_following_list)[0..9]
+    if current_user
+      all_user_ids = User.all.map { |user| user.id }
+      all_user_ids.delete(current_user.id)
+      not_following_list = all_user_ids.reject { |user_id| current_user.following? User.find_by(id:user_id) }
+      @users = User.all.where(id: not_following_list)[0..9]
+    end
 
     @post = Post.new
     if current_user
