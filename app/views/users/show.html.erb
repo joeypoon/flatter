@@ -17,14 +17,14 @@
           <% end %>
         <% end %>
       <% end %>
-      <% if false %>
       <p>
-        <%= simple_form_for(@user, url: update_user_path(id: current_user.id), html: {multipart: true}) do |f| %>
-          <%= f.input_field :photo %>
-          <%= f.submit 'Update Profile Picture' %>
+        <% if current_user && @user == current_user %>
+          <%= simple_form_for(current_user, url: update_user_path(id: current_user.id)) do |f| %>
+            <%= f.input_field :photo %>
+            <%= f.submit 'Update Profile Picture' %>
+          <% end %>
         <% end %>
       </p>
-      <% end %>
     </div>
   </div>
 </div>

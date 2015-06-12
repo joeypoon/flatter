@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   attr_accessor :photo
 
+  before_action :set_posts, only: [:show, :update]
+
   def index
     @users = User.all
   end
 
   def show
-    @posts = Post.all.where('user_id = ?', params[:id]).order('created_at desc limit 5')
     @user = User.find params[:id]
   end
 
@@ -25,17 +26,15 @@ class UsersController < ApplicationController
     end
   end
 
-  # def update
-  #   current_user.update_column(:photo, user_params[:photo])
-  #   binding.pry
-  #   if current_user.save
-  #     redirect_to current_user, notice: 'Success!'
-  #   else
-  #     flash.now[:alert] = '💩'
-  #     render :show
-  #     redirect_to current_user, alert: 'Moo'
-  #   end
-  # end
+  def update
+    current_user.photo = user_params[:photo]
+    if current_user.save!
+      redirect_to user_path(current_user)
+    else
+      flash.now[:alert] = 'nope'
+      render :show
+    end
+  end
 
   def follow
     user = User.find params[:id]
@@ -66,4 +65,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :photo)
     end
+
+    def set_posts
+      @posts = Post.all.where('user_id = ?', params[:id]).order('created_at desc limit 5')
+    end
+    
 end
