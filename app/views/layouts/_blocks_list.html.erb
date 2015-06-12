@@ -1,0 +1,13 @@
+<ul class="list-group">
+
+  <% current_user.blocks.each do |user| %>
+
+    <li class="list-group-item">
+
+      <%= link_to user.name, user %> - <%= link_to 'Unblock', unblock_path(id: user.id), method: :post %>
+
+    </li>
+
+  <% end %>
+
+</ul>

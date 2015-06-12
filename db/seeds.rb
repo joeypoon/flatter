@@ -15,3 +15,6 @@
   end
 
 end
+
+user = User.create(name: 'JWO', email: 'JWO@comal.com', password: 'password', password_confirmation: 'password')
+Post.create(content: 'Tacos are love, Tacos are life', user_id: user.id)

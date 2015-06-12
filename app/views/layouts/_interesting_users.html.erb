@@ -2,7 +2,8 @@
   <% @users.each do |user| %>
 
     <li class="list-group-item">
-      <%= user.name %> <span class="badge"><%= user.followers_count %></span> - <%= link_to 'Follow', follow_path(id: user.id), method: :post %>
+      <%= link_to user.name, user %> - <%= link_to 'Follow', follow_path(id: user.id), method: :post %>
+      <span class="badge"><%= user.followers_count %></span>
     </li>
 
   <% end %>

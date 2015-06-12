@@ -22,6 +22,7 @@ gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'mini_magick'
 gem 'dotenv-rails'
+gem 'pry'
 
 group :development, :test do
   gem 'byebug'

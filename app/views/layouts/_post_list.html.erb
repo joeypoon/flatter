@@ -19,6 +19,7 @@
                 - <%= link_to 'Follow', follow_path(id: post.user.id), method: :post %>
               <% else %>
                 - <%= link_to 'Unfollow', unfollow_path(id: post.user.id), method: :post %>
+                  <%= link_to 'Block', block_path(id: post.user.id), method: :post %>
               <% end %>
             <% end %>
           </p>

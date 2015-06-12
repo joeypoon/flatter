@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     if authenticate_user
       @post = Post.new post_params
       @post.user = current_user
-      if @post.valid? && @post.save
+      if @post.save
         redirect_to root_path, notice: 'Success!'
       else
         redirect_to :back, alert: 'Fail'
@@ -22,10 +22,11 @@ class PostsController < ApplicationController
 
     @post = Post.new
 
-
     if current_user
       follower_ids = current_user.all_following.map { |user| user.id }
+      blocked_ids = current_user.blocks.map { |blocked_user| blocked_user.id }
       all_ids = follower_ids << current_user.id
+      all_ids = all_ids.reject { |id| blocked_ids.include? id }
       @posts = Post.all.where(user_id: all_ids).order('created_at desc').page(params[:page])
     else
       @posts = Post.all.order('created_at desc').page(params[:page])

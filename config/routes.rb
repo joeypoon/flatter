@@ -8,9 +8,15 @@ Rails.application.routes.draw do
 
   post 'users' => 'users#create'
 
+  patch 'users/:id' => 'users#update', as: :update_user
+
   post 'user/follow/:id' => 'users#follow', as: :follow
 
   post 'user/unfollow/:id' => 'users#unfollow', as: :unfollow
+
+  post 'user/block/:id' => 'users#block', as: :block
+
+  post 'user/unblock/:id' => 'users#unblock', as: :unblock
 
   ### Session
 
