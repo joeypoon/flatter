@@ -12,20 +12,28 @@
       <li><%= link_to 'Flatter', root_path, class: 'navbar-brand' %></li>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbar-collapse">
+    <div class="collapse navbar-collapse" id="navbar-collapse" style="margin-right: 1.5em;">
 
       <ul class="nav navbar-nav navbar-right">
 
         <% if current_user.present? %>
 
           <li><%= link_to "#{current_user.name}", current_user %></li>
-          <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+          <li style="margin-right: .7em;"><%= link_to 'Logout', logout_path, method: :delete %></li>
 
         <% else %>
 
-          <li><%= link_to 'Login', login_path %></li>
+          <li style="margin-right: .7em;"><%= link_to 'Login', login_path %></li>
 
         <% end %>
+
+        <li>
+          <p>
+            <%= simple_form_for(:search, url: search_path, method: :get) do |f| %>
+              <div class="form-group"><%= f.input_field :search_word, class: 'form-control', placeholder: 'Search' %>
+            <% end %>
+          </p>
+        </li>
 
       </ul>
 

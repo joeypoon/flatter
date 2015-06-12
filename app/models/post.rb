@@ -5,4 +5,12 @@ class Post < ActiveRecord::Base
 
   validates :content, presence: true, length: { maximum: 120 }
 
+  def self.search(search)
+    if (search.present?)
+      where("content like ?", "%#{search}%").all
+    else
+      all
+    end
+  end
+
 end

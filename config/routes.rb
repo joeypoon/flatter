@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   ### posts
 
+  get 'search' => 'posts#search'
+
   post 'compliment' => 'posts#create', as: :posts
 
   # The priority is based upon order of creation: first created -> highest priority.
