@@ -16,5 +16,7 @@
 
 end
 
-user = User.create(name: 'JWO', email: 'JWO@comal.com', password: 'password', password_confirmation: 'password')
-Post.create(content: 'Tacos are love, Tacos are life', user_id: user.id)
+jwo = User.create(name: 'JWO', email: 'JWO@comal.com', password: 'password', password_confirmation: 'password')
+dotron = User.create(name: 'Dotron', email: 'dotron@tiyhouston.com', password: 'password', password_confirmation: 'password')
+Post.create(content: 'Tacos are love, Tacos are life', user_id: jwo.id)
+Post.create(content: 'BBQ is love, BBQ is life', user_id: dotron.id)
