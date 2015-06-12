@@ -29,9 +29,9 @@ class UsersController < ApplicationController
   def update
     current_user.photo = user_params[:photo]
     if current_user.save!
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: 'Success!'
     else
-      flash.now[:alert] = 'nope'
+      flash.now[:alert] = 'Nope'
       render :show
     end
   end
@@ -69,5 +69,5 @@ class UsersController < ApplicationController
     def set_posts
       @posts = Post.all.where('user_id = ?', params[:id]).order('created_at desc limit 5')
     end
-    
+
 end
